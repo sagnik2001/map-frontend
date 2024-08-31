@@ -1,0 +1,4 @@
+.model-container {
+    display: flex;
+    gap: 12px;
+}

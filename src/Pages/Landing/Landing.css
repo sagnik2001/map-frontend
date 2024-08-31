@@ -1,0 +1,112 @@
+.container {
+    background-color: #2952cc;
+    height: 100vh;
+    padding: 40px 40px;
+    position: relative;
+
+}
+
+
+
+
+
+
+.img_container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    /* // width: 199.86px;
+    // height: 45.55px; */
+
+}
+
+.txtBox {
+    margin-top: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title {
+    color: #fff;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.txtBox-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.txtBox-para {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.createbtn {
+    width: 100%;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    color: #696f8c;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #d8dae5;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 100%; */
+}
+
+@media screen and (max-width:768px) {
+    .signin-container {
+        display: none;
+    }
+}
+
+.createbtn:hover {
+    background-color: transparent;
+    color: #696f8c;
+    border: 1px solid #d8dae5;
+}
+
+.mobbtn {
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .mobbtn {
+        width: 100%;
+        margin-bottom: 8px;
+        background-color: #ffffff;
+        color: #696f8c;
+        font-size: 16px;
+        font-weight: 500;
+        border: 1px solid #d8dae5;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+}

@@ -1,0 +1,61 @@
+.map-details-box {
+    width: 30%;
+}
+
+@media screen and (max-width:768px) {
+    .map-details-box {
+        width: 100%;
+    }
+}
+
+.map-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.map-input-box input {
+    height: 32px;
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.map-input-box button {
+    margin: 0 auto;
+    padding: 10px 22px;
+    background-color: #1D72FE;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.map-details {
+    margin-top: 10px;
+}
+
+.map-details p {
+    font-size: 22px;
+    font-weight: 600;
+
+}
+
+.map-details span {
+    font-weight: 400;
+}
+
+.captureBtnCtn {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.captureBtnCtn button {
+    margin: 0 auto;
+    padding: 10px 22px;
+    background-color: #1D72FE;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+}

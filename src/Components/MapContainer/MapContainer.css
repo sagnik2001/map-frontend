@@ -1,0 +1,14 @@
+.map-container {
+    display: flex;
+    gap: 32px;
+    padding: 16px 24px;
+    height: 100%;
+}
+
+@media screen and (max-width:768px) {
+    .map-container {
+        display: flex;
+        padding: 10px 12px;
+        flex-direction: column-reverse;
+    }
+}
