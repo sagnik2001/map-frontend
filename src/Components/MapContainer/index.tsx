@@ -41,7 +41,7 @@ const MapContainer: React.FC = () => {
             return;
         }
         const saved_data = await saveMap(auth_token as string, image_url, mapInfoDetails?.lat, mapInfoDetails?.long);
-        if (saved_data?.status === "201") {
+        if (saved_data?.status == "201") {
             notifications.show({
                 title: "Success",
                 message: "Map Details Saved Successfully",
@@ -53,7 +53,7 @@ const MapContainer: React.FC = () => {
                 title: "Error",
                 message: "Please try again",
                 color: 'red',
-                position: 'top-center'
+                position: 'bottom-center'
             });
         }
     };
