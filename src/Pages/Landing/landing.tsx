@@ -2,7 +2,7 @@ import { Grid, Stack } from "@mantine/core";
 import "./Landing.css"
 import { signupReq } from "../../api/auth";
 import { auth } from "../../utils/firebase";
-import { GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
