@@ -40,7 +40,7 @@ const ProfilePage = () => {
             <Tabs value={activeTab} onChange={setActiveTab}>
                 <Tabs.List grow justify="center">
                     <Tabs.Tab value="first">Saved Maps</Tabs.Tab>
-                    <Tabs.Tab value="second">Frequent Views</Tabs.Tab>
+                    <Tabs.Tab value="second">Frequent Captures</Tabs.Tab>
                 </Tabs.List>
                 <Tabs.Panel value="first"><SavedMapsComponents saved_maps={saved_maps} /></Tabs.Panel>
                 <Tabs.Panel value="second"><SavedMapsComponents saved_maps={saved_maps} /></Tabs.Panel>

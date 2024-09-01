@@ -39,14 +39,7 @@ const MapboxComponent = ({ map, babylonContainerRef, capturedImage, setCapturedI
         );
     }, [setMapInfoDetails]);
 
-    // useEffect(() => {
-    //     if (map.current && mapInfoDetails?.lat && mapInfoDetails?.long) {
-    //         map.current.flyTo({
-    //             center: [mapInfoDetails.long, mapInfoDetails.lat],
-    //             essential: true  // This ensures the map moves smoothly to the new center
-    //         });
-    //     }
-    // }, [mapInfoDetails?.lat, mapInfoDetails?.long]);
+    
     
 
 
