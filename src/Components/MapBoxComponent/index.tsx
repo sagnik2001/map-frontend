@@ -1,21 +1,23 @@
 import React, { useEffect, useState, useRef, MutableRefObject, SetStateAction } from 'react';
 import mapboxgl, { Map } from 'mapbox-gl';
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import "mapbox-gl/dist/mapbox-gl.css";
-import "./MapBoxComponent.css"
+import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
+import "./MapBoxComponent.css";
 import { useMapStore } from '../../store';
 
-// Set Mapbox access token from environment variable
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-const MapboxComponent = ({ map, zoom,setZoom }: {
-    map: MutableRefObject<Map | null>
-    zoom: number;
-    setZoom : React.Dispatch<SetStateAction<number>>;
-
+const MapboxComponent = ({ map, zoom, setZoom, setAnnotationPoints,mapContainerRef }: {
+    map: MutableRefObject<Map | null>,
+    zoom: number,
+    setZoom: React.Dispatch<SetStateAction<number>>,
+    setAnnotationPoints: React.Dispatch<SetStateAction<any>>,
+    mapContainerRef : MutableRefObject<HTMLDivElement | null>
 }) => {
-    const mapContainerRef = useRef<HTMLDivElement | null>(null);
     const { mapInfoDetails, setMapInfoDetails } = useMapStore();
     const [locationFetched, setLocationFetched] = useState(false);
+    const draw = useRef<MapboxDraw | null>(null); // Store the Mapbox Draw instance
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -26,26 +28,27 @@ const MapboxComponent = ({ map, zoom,setZoom }: {
                     long: longitude,
                     bounds: mapInfoDetails?.bounds
                 });
-                setLocationFetched(true);  // Indicate that location has been fetched
+                setLocationFetched(true);
             },
             (error) => {
                 console.error('Error retrieving location:', error);
-                setLocationFetched(true);  // Indicate fetching done even on error
+                setLocationFetched(true);
             },
-            { timeout: 10000 }  // Optional: set a timeout for location fetching
+            { timeout: 10000 }
         );
     }, [setMapInfoDetails]);
 
-    
-    
+    // Define updateAnnotations function before using it
+    const updateAnnotations = () => {
+        if (draw.current) {
+            const annotations = draw.current.getAll();
+            setAnnotationPoints(annotations);
+        }
+    };
 
-
-
-    // Initialize map when component mounts or lat/lng/zoom changes
     useEffect(() => {
-        if (!locationFetched || map.current) return; // Initialize map only if it hasn't been initialized yet
-        // if (mapContainerRef.current) { // Ensure map container ref is not null
-      
+        if (!locationFetched || map.current) return;
+
         map.current = new mapboxgl.Map({
             container: mapContainerRef.current as HTMLDivElement,
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -55,11 +58,21 @@ const MapboxComponent = ({ map, zoom,setZoom }: {
 
         map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
+        // Initialize Mapbox Draw
+        draw.current = new MapboxDraw({
+            displayControlsDefault: false,
+            controls: {
+                polygon: true,
+                trash: true
+            },
+        });
+        map.current.addControl(draw.current);
+
         map.current.on("move", () => {
             if (!map.current) return;
             const { lng, lat } = map.current.getCenter();
             const bounds = map.current.getBounds();
-            if(!bounds) return;
+            if (!bounds) return;
             setMapInfoDetails({
                 lat: lat,
                 long: lng,
@@ -78,6 +91,11 @@ const MapboxComponent = ({ map, zoom,setZoom }: {
                 map.current.resize();
             }
         });
+
+        // Attach event listeners after defining the updateAnnotations function
+        map.current.on("draw.create", updateAnnotations);
+        map.current.on("draw.update", updateAnnotations);
+        map.current.on("draw.delete", updateAnnotations);
 
         return () => {
             if (map.current) {
