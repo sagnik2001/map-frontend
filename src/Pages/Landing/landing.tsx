@@ -1,4 +1,4 @@
-import { Button, Grid, Stack } from "@mantine/core";
+import { Grid, Stack } from "@mantine/core";
 import "./Landing.css"
 import { signupReq } from "../../api/auth";
 import { auth } from "../../utils/firebase";
@@ -13,16 +13,15 @@ export default function Layout() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      if(user)
+      if (user)
         router("/mapContainer")
     });
 
-    return () => unsubscribe(); 
-}, [auth]);
+    return () => unsubscribe();
+  }, [auth]);
 
-  const handleAccessToken = async (user: User) => {
+  const handleAccessToken = async () => {
     let token = await auth.currentUser?.getIdToken();
-    console.log(token)
     await signupReq(token as string)
     // router.push("/companylist")
 
@@ -32,9 +31,8 @@ export default function Layout() {
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      handleAccessToken(user)
+      await signInWithPopup(auth, provider);
+      handleAccessToken()
       // router.push("/dashboard")
     } catch (error) {
       console.error(error);

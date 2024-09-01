@@ -7,11 +7,8 @@ import { useMapStore } from '../../store';
 // Set Mapbox access token from environment variable
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-const MapboxComponent = ({ map, babylonContainerRef, capturedImage, setCapturedImage, zoom,setZoom }: {
+const MapboxComponent = ({ map, zoom,setZoom }: {
     map: MutableRefObject<Map | null>
-    babylonContainerRef: MutableRefObject<HTMLCanvasElement | null>;
-    capturedImage: string | null;
-    setCapturedImage: React.Dispatch<SetStateAction<string | null>>;
     zoom: number;
     setZoom : React.Dispatch<SetStateAction<number>>;
 

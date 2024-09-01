@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MapContainer from './Components/MapContainer';
 import RedirectToMapOrHome from './Components/RedirectComponent';

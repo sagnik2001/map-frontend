@@ -1,23 +1,23 @@
-import { MutableRefObject, useState } from "react"
+import { MutableRefObject } from "react"
 import { useMapStore } from "../../store"
 import "./MapEndPointsDetails.css"
 
 const MapEndPointsDetails = ({ handleCaptureImage, capturedImage, babylonContainerRef, saveMapDetails }: { handleCaptureImage: () => void; saveMapDetails: () => void; capturedImage: string | null; babylonContainerRef: MutableRefObject<HTMLCanvasElement | null>; }) => {
 
-    const { mapInfoDetails, setMapInfoDetails } = useMapStore()
+    const { mapInfoDetails } = useMapStore()
 
-    const [lat, setLat] = useState<number>()
-    const [long, setLong] = useState<number>()
+    // const [lat, setLat] = useState<number>()
+    // const [long, setLong] = useState<number>()
 
-    console.log(capturedImage)
+    // console.log(capturedImage)
 
-    const setCoord = () => {
-        setMapInfoDetails({
-            ...mapInfoDetails,
-            lat: lat as number,
-            long: long as number
-        })
-    }
+    // const setCoord = () => {
+    //     setMapInfoDetails({
+    //         ...mapInfoDetails,
+    //         lat: lat as number,
+    //         long: long as number
+    //     })
+    // }
 
     return (
         <div className="map-details-box">

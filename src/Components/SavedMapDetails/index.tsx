@@ -1,8 +1,7 @@
 import { Grid } from "@mantine/core"
-import { useEffect, useState } from "react"
-import { auth } from "../../utils/firebase"
-import { notifications } from "@mantine/notifications"
-import { getAllSavedMaps, getTopFrequentSaves, SavedMapResponses } from "../../api/dashboard"
+import {  useState } from "react"
+
+import {  SavedMapResponses } from "../../api/dashboard"
 import "./SavedMapDetails.css"
 import { useDisclosure } from "@mantine/hooks"
 import DisplayModal from "../DisplayModal"

@@ -108,7 +108,7 @@ const MapContainer = () => {
             <Navbar />
             <div className="map-container">
                 <MapEndPointsDetails  handleCaptureImage={() => captureMap()} saveMapDetails={saveMapDetails} capturedImage={capturedImage} babylonContainerRef={babylonContainerRef} />
-                <MapboxComponent setZoom={setZoom} map={map} babylonContainerRef={babylonContainerRef} zoom={zoom} capturedImage={capturedImage} setCapturedImage={setCapturedImage} />
+                <MapboxComponent setZoom={setZoom} map={map}  zoom={zoom}  />
             </div>
         </>
     )

@@ -1,6 +1,5 @@
 import { Modal } from "@mantine/core"
 import "./DisplayModal.css"
-import { useEffect, useRef } from "react";
 
 const DisplayModal = ({ opened, close, zoomedDetails }: any) => {
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import './Navbar.css'; // Import CSS file if you're using plain CSS
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../utils/firebase';
